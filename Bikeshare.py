@@ -108,7 +108,8 @@ def time_stats(df):
 
     # Find the most common month (numerical value from 1 to 6)
     common_month = df['month'].mode()[0]
-    print("Most common month:", common_month)
+    month_name = ['January', 'February', 'March', 'April', 'May', 'June']
+    print("Most common month:", month_name[common_month - 1])
 
     # Find the most common day of the week (e.g., 'Monday', 'Tuesday')
     common_day = df['day_of_week'].mode()[0]
