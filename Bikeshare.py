@@ -9,6 +9,14 @@ CITY_DATA = { 'chicago': 'chicago.csv',
 
 pd.set_option('display.max_columns', None)
 
+def get_user_input(prompt, options):
+    """Helper function to get validated user input."""
+    while True:
+        value = input(prompt).strip().lower()
+        if value in options:
+            return value
+        else:
+            print("Check your input, try again.")
 
 def get_filters():
     """
@@ -21,37 +29,16 @@ def get_filters():
     """
     print('Hello! Let\'s explore some US bikeshare data!')
 
-    # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    # Get user input for city
     cities = ['chicago', 'new york city', 'washington']
-    while True:
-        city = input("Enter city (chicago, new york city, washington): ").lower()
-        if city in cities:
-            break
-        else:
-            print("Check your input, try again.")
+    city = get_user_input("Enter city (chicago, new york city, washington): ", cities)
 
-    # TO DO: get user input for month (all, january, february, ... , june)
-    # Get user input for month
     months = ['january', 'february', 'march', 'april', 'may', 'june', 'all']
-    while True:
-        month = input("Enter month (january to june) or 'all': ").lower()
-        if month in months:
-            break
-        else:
-            print("Check your input, try again.")
+    month = get_user_input("Enter month (january to june) or 'all': ", months)
 
-    # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
-    # Get user input for day of week
     days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'all']
-    while True:
-        day = input("Enter day of week or 'all': ").lower()
-        if day in days:
-            break
-        else:
-            print("Check your input, try again.")
+    day = get_user_input("Enter day of week or 'all': ", days)
 
-    print('-'*40)
+    print('-' * 40)
     return city, month, day
 
 
